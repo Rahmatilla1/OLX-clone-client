@@ -4,7 +4,7 @@ const serverURL = process.env.REACT_APP_SERVER_URL;
 
 const API = axios.create({baseURL: serverURL})
 
-export const deleted = (id) => {
+export const deleteAnnouncement = (id) => {
     const token = localStorage.getItem("token")
     return API.delete(`/api/:${id}`, { headers: { token } });
 };
