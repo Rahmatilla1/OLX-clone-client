@@ -6,5 +6,5 @@ const API = axios.create({baseURL: serverURL})
 
 export const updateUser = (id, data, {method}) => {
     const token = localStorage.getItem("token")
-    return API.put(`/api/:${id}`, data, { headers: { token } });
+    return API.put(`/api/${method}/:${id}`, data, { headers: { token } });
 };
