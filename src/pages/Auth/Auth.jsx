@@ -31,7 +31,7 @@ const Auth = () => {
             }
             localStorage.setItem("profile", JSON.stringify(res.data.user))
             localStorage.setItem("token", JSON.stringify(res.data.token))
-            setCurrentUser(res?.data.user);
+            setCurrentUser(res?.data.user); 
             setLoading(false)
         } catch (error) {
             setLoading(false)
