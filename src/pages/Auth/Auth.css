@@ -1,106 +1,199 @@
-.auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90vh;
-    flex-wrap: wrap;
+.signup {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #3A77FF;
+    overflow-x: hidden;
 }
 
-.auth>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 30px;
+.signup .curcle {
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 110vw;
+    height: 110vw;
+    border: 160px solid #CEDDFF;
+    border-radius: 50%;
+    animation: loader 1.5s ease-out;
 }
 
-.auth-left {
-    gap: 30px;
+@keyframes loader {
+    from {
+        width: 0;
+        height: 0;
+    }
+
+    ;
+
+    to {
+        width: 100vw;
+    }
+
+    ;
 }
 
-.logo-img {
-    display: block;
-    height: 64px;
-    width: 64px;
-}
-
-.app-name>h1 {
-    font-size: 48px;
-}
-
-.app-name>h6 {
-    font-size: 16px;
-}
-
-.auth-form {
-    background-color: var(--cardColor);
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.auth-form>div {
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-}
-
-.info-input {
-    outline: none;
-    border: none;
-    background-color: var(--inputColor);
-    border-radius: 8px;
+.signup-page {
+    background-color: white;
+    max-width: 400px;
+    width: 100%;
     padding: 20px;
-    flex: 1;
+    /* height: 650px; */
+    margin: 0px auto;
+    display: block;
+    position: relative;
+    top: 50px;
+    border-radius: 4px;
 }
 
-.info-btn {
-    padding: 12px 24px;
+.signup-page .facebook {
+    padding: 9px;
+    width: 100%;
+    background-color: transparent;
+    border: 4px solid #002F34;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    transition: all 0.1s linear;
+}
+
+.facebook i {
+    color: rgb(24, 119, 242);
+    margin-right: 10px;
+}
+
+.facebook:hover {
+    box-shadow: inset 0 0 0 3px #002F34;
+}
+
+.apple i {
+    color: black;
+    font-size: 22px;
+}
+
+.google img {
+    width: 30px;
+    height: 30px;
+}
+
+label {
+    display: inline;
+}
+
+.inp input {
+    background: #F2F4F5;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #002F34;
+    font-size: 16px;
+    height: 48px;
+    width: 100% !important;
+    padding: 14px 16px 14px 16px;
+}
+
+.password {
+    position: relative;
+}
+
+.password i {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    padding: 5px;
+    right: 5%;
+    transform: translate(50%, 30%);
+    user-select: none;
+}
+
+.btn-acc {
+    width: 100%;
+    padding: 14px;
+    background-color: #002F34;
+    border: #002F34;
+    border: 5px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-acc:hover {
+    width: 100%;
+    padding: 14px;
+    background-color: #fff;
+    border: 5px solid;
+    border-radius: 10px;
+    color: #002F34;
+}
+
+.passwor-zabil {
+    color: #002F34;
+    text-decoration: none;
+}
+
+.passwor-zabil:hover {
+    color: #CEDDFF;
+}
+
+.span {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.border {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid gray;
+}
+
+.a-p {
+    text-decoration: none;
+    color: #020808;
+}
+
+.a-p:hover {
+    color: #002F34;
+}
+
+h5 {
+    font-size: 14px;
+    margin: 15px 0;
+    font-weight: normal;
+    font-family: Geomanist, sans-serif;
+    text-align: center;
+    transition: all 0.1s ease;
+    width: 100%;
+    padding: 10px;
+}
+
+h5:hover {
+    border-bottom: 3px solid #002F34;
+}
+
+.zabil {
+    text-decoration: none;
+    color: #002F34;
     margin-left: 10px;
 }
 
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    background-image: var(--buttonBg);
-    cursor: pointer;
-    transition: 0.5s ease;
+.zabil:hover {
+    text-decoration: none;
+    color: #002F34;
+    margin-left: 10px;
 }
-
-.button:hover {
-    color: lightcyan;
-    outline: 4px solid lightcyan;
-    background-color: transparent;
-}
-
-.button:disabled {
-    background-color: silver;
-    pointer-events: none;
-}
-
-.info-span {
-    font-size: 12px;
-    cursor: pointer;
-    text-decoration: underline;
-    color: #247a45d8;
-}
-
-.outline-danger {
-    outline: 2px solid red;
-}
-
-.confirm-span {
-    color: red;
-    font-size: 12px;
-    align-self: flex-end;
-    margin-right: 16px;
-    margin-top: 5px;
+@media(max-width: 425px) {
+    .signup-page {
+        width: 100%;
+        top: 0; 
+    }
+    .curcle {
+        display: none;
+    }
 }

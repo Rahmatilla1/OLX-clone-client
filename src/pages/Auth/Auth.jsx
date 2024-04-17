@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { signUp, login } from "../../api/authRequest";
-
 import { useInfoContext } from "../../context/infoContext"
+import GoogleAuth from '../../component/googleAuth';
+
 import './Auth.css'
+
 
 const Auth = () => {
 
     const [isSignup, setIsSignup] = useState(true);
+    const [code, setCode] = useState(false);
     const [loading, setLoading] = useState(false);
     const { setCurrentUser } = useInfoContext();
 
@@ -18,13 +21,9 @@ const Auth = () => {
             let res;
             if (!isSignup) {
                 const password = formData.get('password')
-                const confirmPassword = formData.get('confirmPassword')
                 // signUp
-                if (password === confirmPassword) {
-                    setConfirmPass(true)
+                if (password) {
                     res = await signUp(formData)
-                } else {
-                    return setConfirmPass(false)
                 }
             } else {
                 // login
@@ -39,37 +38,64 @@ const Auth = () => {
             console.error(error?.response?.data.message)
         }
 
+        
     }
-
+    
     return (
-        <div className='auth'>
-            <div className="autt-right">
+        <div className='signup'>
+            <div className="curcle"></div>
+            <div className="signup-page">
                 <form onSubmit={handleSubmit} action="" className="auth-form">
-                    <h3>{isSignup ? "Login" : "SignUp"}</h3>
-
-                    {
-                        !isSignup && <>
-                            <div>
-                                <input type="text" name='firstName' minLength={3} className="info-input" placeholder='Enter your firstname' required />
-                            </div>
-                            <div>
-                                <input type="text" name='lastName' className="info-input" placeholder='Enter your lastname' required />
-                            </div>
-                        </>
-                    }
-                    <div>
-                        <input type="email" name='email' className="info-input" placeholder='Enter your email' required />
+        <button className="facebook mb-3">
+        <i class="fa-brands fa-facebook"></i>
+        <span>Продолжить через Facebook</span>
+        </button>
+        <button className="facebook apple mb-3">
+        <i class="fa-brands fa-apple"></i>
+        <span>Продолжить через Apple</span>
+        </button>
+        <GoogleAuth/>
+                    <div className='inp'>
+                        <div className="span">
+                            <span className='border'></span>
+                            <span>или</span>
+                            <span className='border'></span>
+                        </div>
+                        <div className="d-flex justify-content-around">
+              <h5
+                style={isSignup ? { cursor: "pointer", borderBottom: '3px solid #002F34', padding: '10px'} : {cursor: "pointer"}}
+                onClick={() => setIsSignup(true)}
+              >
+                Войти
+              </h5>
+              <h5
+                style={!isSignup ? { cursor: "pointer", borderBottom: '3px solid #002F34', padding: '10px'} : {cursor: "pointer"}}
+                onClick={() => setIsSignup(false)}
+              >
+                Зарегистрироваться
+              </h5>
+            </div>
+                        <label htmlFor="" className='label'>
+                        Электронная почта или телефон
+                        <input type="email" name='email' className="info-input" required/>
+                        </label>
+                    <label htmlFor="" className='password label'>
+                    Пароль <br />
+                        <input type={!code ? "password" : 'text'} name='password'className="info-input" required />
+                        <span onClick={() => setCode(!code)}>{!code ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</span>
+                        </label>
                     </div>
+                        <a href="" className='passwor-zabil'>{isSignup ? "Забыли пароль?" : ""}</a>
+                        <p>{isSignup ? "" : `Я соглашаюсь с Условия использования а также с передачей и обработкой моих данных в OLX. Я подтверждаю своe совершеннолетие и ответственность за размещение объявления`}</p>
+                        <br />
+                        <a href="">
+                            {isSignup ? "" : <input className='zabilone' type="checkbox" />}
+                        </a>
+                            <a href="" className='zabil'>{isSignup ? "" : "Да, я хочу получать информацию о новостях и акциях на OLX."}</a>
                     <div>
-                        <input type="password" name='password' minLength={4} className="info-input" placeholder='Enter your password' required />
+                        <button disabled={loading} className='btn-acc'>{isSignup ? "Войти" : "Зарегистрироваться"}</button>
                     </div>
-                    <div>
-                        <span onClick={() => {
-                            setIsSignup(!isSignup)
-                        }} className="info-span">{!isSignup ? "Already have a account Login" : "Don't have an account SignUp"}</span>
-
-                        <button disabled={loading} className='info-btn button'>{isSignup ? "Login" : "SignUp"}</button>
-                    </div>
+                    <p>{isSignup ? "При входе вы соглашаетесь с нашими" : ""}<a href="" className='a-p'>{isSignup ?"Условия использования." : ""}</a></p>
                 </form>
             </div>
         </div>
