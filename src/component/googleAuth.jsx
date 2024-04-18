@@ -19,8 +19,8 @@ const GoogleAuth = () => {
             let res;
 
             let newUser = {
-                name: data.given_name,
-                surname: data.name,
+                firstname: data.given_name,
+                lastname: data.name,
                 email: data.email,
                 profilePicture: data.picture,
             };
